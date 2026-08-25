@@ -26,6 +26,7 @@
       <ul class="nav-links" id="menu">
         <li><a href="#apps">Apps</a></li>
         <li><a href="#namo">NaMo Kids</a></li>
+        <li><a href="#nandu-lab">Nandu's Lab</a></li>
         <li><a href="#books">Books</a></li>
         <li><a href="#contact">Contact</a></li>
         <li><a class="btn btn-saffron" href="https://www.youtube.com/@NaMoKidsChannel" target="_blank" rel="noopener">Watch NaMo</a></li>
@@ -48,7 +49,7 @@
       </div>
 
       <div class="kids-art">
-        <img src="namo-kids-hero.png" width="720" height="540" alt="Nandu and Moksha learning together with the Word Jam owl mascot between them. Nandu holds the AI for Kids book.">
+        <img src="assets/namo-kids-hero.png" width="720" height="540" alt="Nandu and Moksha learning together with the Word Jam owl mascot between them. Nandu holds the AI for Kids book.">
         <div class="names"><span>Nandu</span><span>Moksha</span></div>
       </div>
       </div>
@@ -84,7 +85,7 @@
       </div>
       <div class="apps">
         <article class="card">
-          <img class="app-icon" src="word-jam-icon.png" width="64" height="64" alt="Word Jam app icon">
+          <img class="app-icon" src="assets/word-jam-icon.png" width="64" height="64" alt="Word Jam app icon">
           <p class="meta">Kids word game</p>
           <h3>Word Jam</h3>
           <p>Swipe letters, find bonus words, and grow English vocabulary with a cheerful owl. Hundreds of puzzles, offline play, hints, and coins.</p>
@@ -93,7 +94,7 @@
 
         <article class="card soon">
           <span class="badge">Coming soon</span>
-          <img class="app-icon" src="word-jam-telugu-icon.png" width="64" height="64" alt="Word Jam Telugu app icon">
+          <img class="app-icon" src="assets/word-jam-telugu-icon.png" width="64" height="64" alt="Word Jam Telugu app icon">
           <p class="meta">తెలుగు పదాల ఆట</p>
           <h3>Word Jam: Telugu</h3>
           <p>The same joyful word-jam play, in Telugu. Built for kids and families who want letters, sounds, and vocabulary in our language.</p>
@@ -101,7 +102,7 @@
         </article>
 
         <article class="card">
-          <img class="app-icon" src="tambola-icon.png" width="64" height="64" alt="Tambola Number Picker app icon">
+          <img class="app-icon" src="assets/tambola-icon.png" width="64" height="64" alt="Tambola Number Picker app icon">
           <p class="meta">Housie / Bingo caller</p>
           <h3>Tambola Number Picker</h3>
           <p>One-tap random numbers, AutoPlay, voice callouts, and history. English, Telugu, and Tamil — for family nights, kitty parties, and Zoom games.</p>
@@ -157,6 +158,55 @@
           <h3>Joyful performer</h3>
           <p>Dance, play, and Telugu fun. The girl who brings energy to NaMo Kids — from Krishna-stami stages to living-room shorts.</p>
         </article>
+      </div>
+    </section>
+
+    <section class="section nandu-lab" id="nandu-lab">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="lab-kicker">Built by Nandu · browser games</span>
+            <h2>Nandu's Lab</h2>
+            <p class="intro">Nandu builds games you can play right here — no app store, no install. Tap the keys, record a tune, and show your family. More games are on the way!</p>
+          </div>
+          <a class="btn btn-primary" href="games/piano.html">Open full piano</a>
+        </div>
+
+        <article class="lab-feature">
+          <div class="lab-feature-copy">
+            <span class="lab-tag">Live now</span>
+            <h3>Virtual Piano</h3>
+            <p>Click the keys, use your keyboard (A–L for white keys), record your melody, and play it back. Pick waveforms, turn up the volume — a mini music studio in the browser.</p>
+            <ul class="lab-perks">
+              <li>Mouse &amp; touch</li>
+              <li>Keyboard shortcuts</li>
+              <li>Record &amp; playback</li>
+            </ul>
+            <a class="btn btn-saffron" href="games/piano.html">Play now →</a>
+          </div>
+          <div class="lab-preview">
+            <iframe class="lab-embed" title="Nandu's Virtual Piano" src="games/piano.html" loading="lazy"></iframe>
+            <p class="lab-preview-hint">Try it here — or open full screen for the best experience.</p>
+          </div>
+        </article>
+
+        <div class="lab-grid">
+          <article class="lab-card coming">
+            <span class="lab-icon" aria-hidden="true">🎮</span>
+            <h4>Next game</h4>
+            <p>Nandu is cooking up something new. Check back soon!</p>
+          </article>
+          <article class="lab-card coming">
+            <span class="lab-icon" aria-hidden="true">✨</span>
+            <h4>More surprises</h4>
+            <p>Follow <a href="https://www.youtube.com/@NaMoKidsChannel" target="_blank" rel="noopener">NaMo Kids</a> for the next launch.</p>
+          </article>
+          <article class="lab-card coming">
+            <span class="lab-icon" aria-hidden="true">💡</span>
+            <h4>Have an idea?</h4>
+            <p>What should Nandu build next? <a href="mailto:s2aapps@gmail.com">Tell us!</a></p>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -225,15 +275,19 @@
   <script>
     const toggle = document.querySelector(".menu-toggle");
     const menu = document.querySelector("#menu");
-    toggle.addEventListener("click", () => {
-      const open = menu.classList.toggle("open");
+
+    function setMenuOpen(open) {
+      menu.classList.toggle("open", open);
       toggle.setAttribute("aria-expanded", open);
+      toggle.textContent = open ? "Close" : "Menu";
+    }
+
+    toggle.addEventListener("click", () => {
+      setMenuOpen(!menu.classList.contains("open"));
     });
+
     menu.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        menu.classList.remove("open");
-        toggle.setAttribute("aria-expanded", "false");
-      });
+      link.addEventListener("click", () => setMenuOpen(false));
     });
   </script>
 </body>
