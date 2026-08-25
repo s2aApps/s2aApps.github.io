@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 560" role="img" aria-labelledby="title desc">
+  <title id="title">Nandu and Moksha</title>
+  <desc id="desc">Illustrated portraits of Nandu, a boy with a book, and Moksha, a girl with letter blocks, with a small owl between them.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fbf6ea"/>
+      <stop offset="1" stop-color="#ead9b8"/>
+    </linearGradient>
+    <linearGradient id="skin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f3c7a1"/>
+      <stop offset="1" stop-color="#e4a57a"/>
+    </linearGradient>
+  </defs>
+  <rect width="720" height="560" rx="28" fill="url(#bg)"/>
+  <circle cx="92" cy="78" r="48" fill="#f0d48a" opacity="0.9"/>
+  <circle cx="640" cy="70" r="26" fill="#7eb8c9" opacity="0.55"/>
+  <circle cx="600" cy="150" r="10" fill="#e25c1a" opacity="0.35"/>
+  <text x="56" y="200" font-size="34" fill="#0f6a63" font-family="Georgia, serif" opacity="0.22">A</text>
+  <text x="630" y="230" font-size="32" fill="#e25c1a" font-family="Georgia, serif" opacity="0.28">&#x0C05;</text>
+  <ellipse cx="360" cy="508" rx="240" ry="22" fill="#d4c09a"/>
+
+  <!-- Nandu -->
+  <g transform="translate(80,70)">
+    <ellipse cx="130" cy="410" rx="78" ry="16" fill="#cbb48b"/>
+    <path d="M88 250c-8 70 8 130 18 150h50c12-24 28-90 20-150z" fill="#0f6a63"/>
+    <path d="M78 168c12-18 90-22 110 4 14 18 10 92-8 140H92c-22-40-24-112-14-144z" fill="#e2a84a"/>
+    <rect x="70" y="250" width="22" height="70" rx="11" fill="#f3c7a1"/>
+    <rect x="176" y="236" width="22" height="64" rx="11" fill="#f3c7a1"/>
+    <rect x="188" y="268" width="62" height="46" rx="8" fill="#fffaf3" stroke="#0f6a63" stroke-width="4"/>
+    <path d="M219 268v46" stroke="#e25c1a" stroke-width="4"/>
+    <circle cx="130" cy="118" r="62" fill="url(#skin)"/>
+    <ellipse cx="78" cy="126" rx="10" ry="14" fill="#e4a57a"/>
+    <ellipse cx="182" cy="126" rx="10" ry="14" fill="#e4a57a"/>
+    <path d="M78 92c18-54 92-58 112-8 4 12-6 22-20 24H96c-14-2-22-8-18-16z" fill="#2a211b"/>
+    <path d="M86 78c28-20 70-18 92 8" fill="#2a211b"/>
+    <circle cx="108" cy="122" r="7" fill="#1c1610"/>
+    <circle cx="152" cy="122" r="7" fill="#1c1610"/>
+    <circle cx="110" cy="120" r="2" fill="#fff"/>
+    <circle cx="154" cy="120" r="2" fill="#fff"/>
+    <path d="M114 148c10 12 24 12 34 0" fill="none" stroke="#c45c62" stroke-width="4" stroke-linecap="round"/>
+    <rect x="96" y="388" width="28" height="18" rx="6" fill="#7a4a2a"/>
+    <rect x="138" y="388" width="28" height="18" rx="6" fill="#7a4a2a"/>
+  </g>
+
+  <!-- Moksha -->
+  <g transform="translate(330,86)">
+    <ellipse cx="140" cy="394" rx="78" ry="16" fill="#cbb48b"/>
+    <path d="M86 250c6 40 16 110 18 132h76c8-22 20-90 14-132z" fill="#f4ead8"/>
+    <path d="M78 170c18-16 110-20 130 10 16 24 8 96-10 148H94c-24-44-28-120-16-158z" fill="#c45c62"/>
+    <path d="M92 168c40 18 80 18 120 0" fill="#e07a7f"/>
+    <rect x="58" y="232" width="22" height="62" rx="11" fill="#f3c7a1"/>
+    <rect x="204" y="228" width="22" height="62" rx="11" fill="#f3c7a1"/>
+    <rect x="18" y="278" width="40" height="40" rx="8" fill="#e0a84a"/>
+    <text x="38" y="306" text-anchor="middle" font-size="20" font-family="Georgia, serif" fill="#1c1610">&#x0C28;</text>
+    <rect x="228" y="270" width="40" height="40" rx="8" fill="#0f6a63"/>
+    <text x="248" y="298" text-anchor="middle" font-size="20" font-family="Georgia, serif" fill="#fffaf3">M</text>
+    <circle cx="140" cy="112" r="60" fill="url(#skin)"/>
+    <ellipse cx="90" cy="120" rx="10" ry="14" fill="#e4a57a"/>
+    <ellipse cx="190" cy="120" rx="10" ry="14" fill="#e4a57a"/>
+    <path d="M88 70c36-36 72-36 108 0v18H88z" fill="#2a211b"/>
+    <path d="M78 86c-16 54-8 96 8 118" fill="none" stroke="#2a211b" stroke-width="16" stroke-linecap="round"/>
+    <path d="M202 86c16 54 8 96-8 118" fill="none" stroke="#2a211b" stroke-width="16" stroke-linecap="round"/>
+    <circle cx="70" cy="208" r="8" fill="#e25c1a"/>
+    <circle cx="212" cy="208" r="8" fill="#e25c1a"/>
+    <circle cx="118" cy="116" r="7" fill="#1c1610"/>
+    <circle cx="160" cy="116" r="7" fill="#1c1610"/>
+    <circle cx="120" cy="114" r="2" fill="#fff"/>
+    <circle cx="162" cy="114" r="2" fill="#fff"/>
+    <path d="M124 142c10 12 24 12 34 0" fill="none" stroke="#e25c1a" stroke-width="4" stroke-linecap="round"/>
+    <rect x="108" y="372" width="26" height="16" rx="6" fill="#7a4a2a"/>
+    <rect x="150" y="372" width="26" height="16" rx="6" fill="#7a4a2a"/>
+  </g>
+
+  <!-- Owl -->
+  <g transform="translate(300,36)">
+    <ellipse cx="58" cy="70" rx="42" ry="46" fill="#0f6a63"/>
+    <circle cx="42" cy="62" r="14" fill="#fffaf3"/>
+    <circle cx="74" cy="62" r="14" fill="#fffaf3"/>
+    <circle cx="42" cy="62" r="6" fill="#1c1610"/>
+    <circle cx="74" cy="62" r="6" fill="#1c1610"/>
+    <path d="M52 76l6 10 6-10z" fill="#e25c1a"/>
+    <path d="M20 70c-10 8-16 22-10 28" fill="none" stroke="#0a4541" stroke-width="6" stroke-linecap="round"/>
+    <path d="M96 70c10 8 16 22 10 28" fill="none" stroke="#0a4541" stroke-width="6" stroke-linecap="round"/>
+  </g>
+</svg>
