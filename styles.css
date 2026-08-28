@@ -339,7 +339,7 @@ h1 {
 }
 
 #nandu-lab::before {
-  content: "♪ ♫ ♩ ♬";
+  content: "⚡ 🎹 ♪ ✨";
   position: absolute;
   inset: 0;
   font-size: clamp(2rem, 6vw, 4rem);
@@ -383,6 +383,22 @@ h1 {
   margin-bottom: 22px;
   position: relative;
   z-index: 1;
+}
+
+.lab-feature-quiz {
+  background: linear-gradient(145deg, #46178f 0%, #6b21a8 48%, #312e81 130%);
+}
+
+.lab-head-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.lab-btn-light {
+  color: #f8fafc;
+  border-color: rgba(248, 250, 252, 0.35);
 }
 
 .lab-feature-copy {
@@ -449,6 +465,10 @@ h1 {
   display: block;
 }
 
+.lab-embed-quiz {
+  background: #f5f5f5;
+}
+
 .lab-preview-hint {
   margin: 10px 4px 0;
   font-size: 0.78rem;
@@ -499,6 +519,12 @@ h1 {
 .lab-card a {
   color: var(--teal-deep);
   font-weight: 600;
+  text-decoration: none;
+  margin-top: auto;
+}
+
+.lab-card a:hover {
+  text-decoration: underline;
 }
 
 #books {
@@ -551,7 +577,7 @@ h1 {
 
 .apps {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 18px;
 }
 
@@ -582,6 +608,20 @@ h1 {
 }
 
 .app-icon { width: 64px; height: 64px; border-radius: 16px; object-fit: cover; }
+
+.app-icon-lab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  line-height: 1;
+  background: linear-gradient(145deg, #1e1b4b 0%, #312e81 55%, #0f766e 130%);
+  box-shadow: 0 8px 20px rgba(30, 27, 75, 0.22);
+}
+
+.app-icon-quiz {
+  background: linear-gradient(145deg, #46178f 0%, #6b21a8 55%, #312e81 130%);
+}
 
 .card h3 { font-size: 1.25rem; }
 
@@ -754,4 +794,5 @@ footer a { color: var(--teal-deep); }
   }
 
   .section-head, .contact { flex-direction: column; align-items: start; }
+  .lab-head-actions { width: 100%; }
 }

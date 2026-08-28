@@ -1,0 +1,2036 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>QuizRush</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    user-select:none;
+    -webkit-user-select:none;
+}
+
+.site-back{
+    display:inline-block;
+    margin:12px 0 0 22px;
+    color:#46178f;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:bold;
+}
+
+.site-back:hover{
+    text-decoration:underline;
+}
+
+body.embed .site-back{
+    display:none;
+}
+
+body.embed header .header-buttons{
+    display:none;
+}
+
+body.embed .screen{
+    min-height:auto;
+    padding:12px 16px 20px;
+}
+
+body.embed .hero h1{
+    font-size:2rem;
+}
+
+body.embed .big-buttons{
+    flex-direction:column;
+}
+
+body{
+    margin:0;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f5f5f5;
+    color:#222;
+}
+
+button,input,textarea,select{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+    border:0;
+}
+
+.hidden{
+    display:none!important;
+}
+
+/* HEADER */
+
+header{
+    height:64px;
+    background:#46178f;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 22px;
+    box-shadow:0 3px 10px #0003;
+}
+
+.logo{
+    font-size:25px;
+    font-weight:900;
+}
+
+.header-buttons{
+    display:flex;
+    gap:8px;
+}
+
+.header-buttons button{
+    padding:10px 15px;
+    border-radius:8px;
+    background:white;
+    color:#46178f;
+    font-weight:bold;
+}
+
+/* GENERAL */
+
+.screen{
+    min-height:calc(100vh - 64px);
+    padding:25px;
+}
+
+.back-btn{
+    background:#fff;
+    color:#46178f;
+    border:2px solid #ddd;
+    border-radius:9px;
+    padding:10px 16px;
+    font-weight:bold;
+    margin-bottom:18px;
+}
+
+.back-btn:hover{
+    background:#eee;
+}
+
+/* HOME */
+
+.home{
+    max-width:1100px;
+    margin:auto;
+}
+
+.hero{
+    background:linear-gradient(135deg,#46178f,#7b2cbf);
+    color:white;
+    border-radius:20px;
+    padding:45px 20px;
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.hero h1{
+    font-size:52px;
+    margin:0 0 10px;
+}
+
+.hero p{
+    font-size:20px;
+}
+
+.big-buttons{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-top:25px;
+}
+
+.big-btn{
+    min-width:210px;
+    padding:17px 25px;
+    border-radius:12px;
+    color:white;
+    font-size:19px;
+    font-weight:bold;
+    box-shadow:0 5px 0 #0002;
+}
+
+.create{
+    background:#26890c;
+}
+
+.play{
+    background:#1368ce;
+}
+
+/* PREMADE */
+
+.section-title{
+    margin:25px 0 12px;
+}
+
+.quiz-cards{
+    display:grid;
+    grid-template-columns:
+        repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+}
+
+.quiz-card{
+    background:white;
+    border-radius:15px;
+    padding:20px;
+    box-shadow:0 3px 10px #0001;
+    transition:.15s;
+}
+
+.quiz-card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 6px 15px #0002;
+}
+
+.quiz-icon{
+    font-size:40px;
+}
+
+.quiz-card h3{
+    margin:10px 0 5px;
+}
+
+.quiz-card p{
+    color:#666;
+}
+
+.quiz-card button{
+    width:100%;
+    padding:12px;
+    background:#46178f;
+    color:white;
+    border-radius:8px;
+    font-weight:bold;
+}
+
+/* EDITOR */
+
+.editor{
+    max-width:1100px;
+    margin:auto;
+}
+
+.editor-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    margin-bottom:15px;
+}
+
+.editor-top h2{
+    margin:0;
+}
+
+.editor-actions{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+}
+
+.small-btn{
+    padding:10px 14px;
+    border-radius:8px;
+    background:white;
+    border:2px solid #ddd;
+    font-weight:bold;
+}
+
+.primary{
+    background:#46178f;
+    color:white;
+    border-color:#46178f;
+}
+
+.quiz-settings{
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    margin-bottom:20px;
+    box-shadow:0 2px 8px #0001;
+}
+
+.quiz-settings label{
+    display:block;
+    font-weight:bold;
+    margin-bottom:7px;
+}
+
+.quiz-settings input{
+    width:100%;
+    padding:12px;
+    border:2px solid #ddd;
+    border-radius:8px;
+}
+
+.question-card{
+    background:white;
+    border-radius:15px;
+    padding:20px;
+    margin-bottom:18px;
+    box-shadow:0 2px 8px #0001;
+}
+
+.question-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:12px;
+}
+
+.question-head h3{
+    margin:0;
+}
+
+.delete-btn{
+    background:#e21b3c;
+    color:white;
+    padding:8px 12px;
+    border-radius:7px;
+}
+
+.question-text{
+    width:100%;
+    min-height:70px;
+    resize:vertical;
+    padding:12px;
+    border:2px solid #ddd;
+    border-radius:8px;
+    margin-bottom:15px;
+}
+
+.answers{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.answer-edit{
+    padding:12px;
+    border:3px solid #ddd;
+    border-radius:10px;
+}
+
+.answer-edit.correct{
+    border-color:#26890c;
+    background:#efffea;
+}
+
+.answer-edit input[type="text"]{
+    width:100%;
+    padding:10px;
+    border:2px solid #ddd;
+    border-radius:7px;
+}
+
+.answer-edit label{
+    display:block;
+    margin-top:8px;
+    font-size:13px;
+    font-weight:bold;
+}
+
+.add-question{
+    width:100%;
+    padding:17px;
+    border-radius:12px;
+    background:#26890c;
+    color:white;
+    font-size:18px;
+    font-weight:bold;
+}
+
+/* PLAY */
+
+.play-area{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    background:#46178f;
+}
+
+.play-top{
+    background:#46178f;
+    color:white;
+    padding:15px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.play-back{
+    background:white;
+    color:#46178f;
+    padding:9px 14px;
+    border-radius:8px;
+    font-weight:bold;
+}
+
+.play-controls{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.progress{
+    font-weight:bold;
+}
+
+.timer{
+    background:white;
+    color:#46178f;
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.question-display{
+    background:#46178f;
+    color:white;
+    text-align:center;
+    padding:25px 20px 45px;
+}
+
+.question-display h1{
+    font-size:35px;
+    max-width:900px;
+    margin:10px auto;
+}
+
+.answer-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    flex:1;
+    gap:12px;
+    padding:12px;
+    background:#f5f5f5;
+}
+
+.answer-btn{
+    min-height:180px;
+    border-radius:12px;
+    color:white;
+    font-size:28px;
+    font-weight:bold;
+    padding:20px;
+    box-shadow:0 5px 0 #0003;
+}
+
+.answer-btn:nth-child(1){
+    background:#e21b3c;
+}
+
+.answer-btn:nth-child(2){
+    background:#1368ce;
+}
+
+.answer-btn:nth-child(3){
+    background:#d89e00;
+}
+
+.answer-btn:nth-child(4){
+    background:#26890c;
+}
+
+.answer-btn.disabled{
+    opacity:.55;
+    pointer-events:none;
+}
+
+/* RESULT */
+
+.result{
+    max-width:700px;
+    margin:20px auto;
+    text-align:center;
+}
+
+.result-box{
+    background:white;
+    border-radius:20px;
+    padding:40px 20px;
+    box-shadow:0 5px 20px #0002;
+}
+
+.score{
+    font-size:70px;
+    font-weight:900;
+    color:#46178f;
+}
+
+.leaderboard{
+    margin-top:25px;
+    text-align:left;
+}
+
+.leader-row{
+    display:flex;
+    justify-content:space-between;
+    background:#f2f2f2;
+    padding:15px;
+    margin:7px 0;
+    border-radius:8px;
+    font-weight:bold;
+}
+
+.file-label{
+    display:inline-block;
+    padding:10px 14px;
+    border-radius:8px;
+    background:white;
+    border:2px solid #ddd;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+#fileInput{
+    display:none;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+    .hero h1{
+        font-size:38px;
+    }
+
+    .screen{
+        padding:15px;
+    }
+
+    .answers{
+        grid-template-columns:1fr;
+    }
+
+    .answer-grid{
+        grid-template-columns:1fr;
+    }
+
+    .answer-btn{
+        min-height:105px;
+        font-size:21px;
+    }
+
+    .question-display h1{
+        font-size:25px;
+    }
+
+    .editor-top{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .editor-actions{
+        justify-content:center;
+    }
+
+    .play-top{
+        padding:10px;
+    }
+
+    .play-back{
+        font-size:13px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<a class="site-back" href="../index.html#nandu-lab">← Back to S2A Apps</a>
+
+<header>
+
+    <div class="logo">⚡ QuizRush</div>
+
+    <div class="header-buttons">
+        <button onclick="showHome()">Home</button>
+        <button onclick="openEditor()">Editor</button>
+    </div>
+
+</header>
+
+
+<!-- ================= HOME ================= -->
+
+<section id="homeScreen" class="screen">
+
+<div class="home">
+
+    <div class="hero">
+
+        <h1>QuizRush</h1>
+
+        <p>Create. Play. Compete.</p>
+
+        <div class="big-buttons">
+
+            <button class="big-btn create"
+                    onclick="openEditor()">
+                ✏️ Create Quiz
+            </button>
+
+            <button class="big-btn play"
+                    onclick="startQuiz()">
+                ▶️ Play Quiz
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <h2 class="section-title">
+        📚 Premade Quizzes
+    </h2>
+
+    <div class="quiz-cards">
+
+        <div class="quiz-card">
+
+            <div class="quiz-icon">🌎</div>
+
+            <h3>General Knowledge</h3>
+
+            <p>5 questions</p>
+
+            <button onclick="loadPremade(0)">
+                Use Quiz
+            </button>
+
+        </div>
+
+
+        <div class="quiz-card">
+
+            <div class="quiz-icon">🔬</div>
+
+            <h3>Science</h3>
+
+            <p>5 questions</p>
+
+            <button onclick="loadPremade(1)">
+                Use Quiz
+            </button>
+
+        </div>
+
+
+        <div class="quiz-card">
+
+            <div class="quiz-icon">💻</div>
+
+            <h3>Technology</h3>
+
+            <p>5 questions</p>
+
+            <button onclick="loadPremade(2)">
+                Use Quiz
+            </button>
+
+        </div>
+
+
+        <div class="quiz-card">
+
+            <div class="quiz-icon">➗</div>
+
+            <h3>Math</h3>
+
+            <p>5 questions</p>
+
+            <button onclick="loadPremade(3)">
+                Use Quiz
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="quiz-settings" style="margin-top:25px">
+
+        <h2>Current Quiz</h2>
+
+        <p id="homeQuizInfo"></p>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- ================= EDITOR ================= -->
+
+<section id="editorScreen" class="screen hidden">
+
+<div class="editor">
+
+    <button class="back-btn" onclick="showHome()">
+        ← Back
+    </button>
+
+    <div class="editor-top">
+
+        <h2>✏️ Quiz Editor</h2>
+
+        <div class="editor-actions">
+
+            <button class="small-btn"
+                    onclick="saveQuiz()">
+                💾 Save
+            </button>
+
+            <button class="small-btn"
+                    onclick="exportQuiz()">
+                📥 Export
+            </button>
+
+            <label class="file-label">
+                📤 Import
+                <input id="fileInput"
+                       type="file"
+                       accept=".json"
+                       onchange="importQuiz(event)">
+            </label>
+
+            <button class="small-btn primary"
+                    onclick="startQuiz()">
+                ▶️ Play
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="quiz-settings">
+
+        <label>Quiz title</label>
+
+        <input id="quizTitle"
+               placeholder="My Awesome Quiz"
+               oninput="updateQuizTitle()">
+
+    </div>
+
+
+    <div id="questionsContainer"></div>
+
+
+    <button class="add-question"
+            onclick="addQuestion()">
+        ➕ Add Question
+    </button>
+
+</div>
+
+</section>
+
+
+<!-- ================= PLAY ================= -->
+
+<section id="playScreen" class="hidden">
+
+<div class="play-area">
+
+    <div class="play-top">
+
+        <button class="play-back"
+                onclick="leaveGame()">
+            ← Back
+        </button>
+
+        <div class="play-controls">
+
+            <div class="progress"
+                 id="progress">
+                Question 1 / 5
+            </div>
+
+            <div class="timer"
+                 id="timer">
+                20
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="question-display">
+
+        <h1 id="questionText">
+            Question
+        </h1>
+
+    </div>
+
+
+    <div class="answer-grid"
+         id="answerGrid">
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- ================= RESULTS ================= -->
+
+<section id="resultScreen" class="screen hidden">
+
+<div class="result">
+
+    <button class="back-btn"
+            onclick="showHome()">
+        ← Back to Home
+    </button>
+
+
+    <div class="result-box">
+
+        <h1>🏆 Game Finished!</h1>
+
+        <div class="score"
+             id="finalScore">
+            0
+        </div>
+
+        <p id="finalMessage">
+            Nice work!
+        </p>
+
+
+        <div class="leaderboard">
+
+            <h2>Leaderboard</h2>
+
+            <div class="leader-row">
+
+                <span>🥇 You</span>
+
+                <span id="leaderScore">
+                    0
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <br>
+
+        <button class="big-btn play"
+                onclick="startQuiz()">
+            🔄 Play Again
+        </button>
+
+        <br><br>
+
+        <button class="small-btn"
+                onclick="openEditor()">
+            ✏️ Edit Quiz
+        </button>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<script>
+
+/* =========================
+   DEFAULT QUIZ
+========================= */
+
+let quiz = {
+
+    title:"My Quiz",
+
+    questions:[
+
+        {
+            question:"What is 2 + 2?",
+
+            answers:[
+                "3",
+                "4",
+                "5",
+                "6"
+            ],
+
+            correct:1,
+            time:20
+        },
+
+        {
+            question:"Which planet is known as the Red Planet?",
+
+            answers:[
+                "Earth",
+                "Mars",
+                "Venus",
+                "Jupiter"
+            ],
+
+            correct:1,
+            time:20
+        }
+
+    ]
+};
+
+
+/* =========================
+   PREMADE QUIZZES
+========================= */
+
+const premadeQuizzes = [
+
+{
+    title:"General Knowledge",
+
+    questions:[
+
+        {
+            question:"What is the largest ocean on Earth?",
+            answers:[
+                "Atlantic Ocean",
+                "Pacific Ocean",
+                "Indian Ocean",
+                "Arctic Ocean"
+            ],
+            correct:1,
+            time:20
+        },
+
+        {
+            question:"What is the capital of France?",
+            answers:[
+                "Madrid",
+                "Rome",
+                "Paris",
+                "Berlin"
+            ],
+            correct:2,
+            time:20
+        },
+
+        {
+            question:"How many continents are there?",
+            answers:[
+                "5",
+                "6",
+                "7",
+                "8"
+            ],
+            correct:2,
+            time:20
+        },
+
+        {
+            question:"Which animal is known as the King of the Jungle?",
+            answers:[
+                "Tiger",
+                "Lion",
+                "Elephant",
+                "Bear"
+            ],
+            correct:1,
+            time:20
+        },
+
+        {
+            question:"Which language is primarily spoken in Brazil?",
+            answers:[
+                "Spanish",
+                "Portuguese",
+                "French",
+                "English"
+            ],
+            correct:1,
+            time:20
+        }
+
+    ]
+},
+
+
+{
+    title:"Science",
+
+    questions:[
+
+        {
+            question:"What gas do plants absorb?",
+            answers:[
+                "Oxygen",
+                "Nitrogen",
+                "Carbon dioxide",
+                "Hydrogen"
+            ],
+            correct:2,
+            time:20
+        },
+
+        {
+            question:"What is H₂O?",
+            answers:[
+                "Salt",
+                "Water",
+                "Oxygen",
+                "Hydrogen"
+            ],
+            correct:1,
+            time:20
+        },
+
+        {
+            question:"What force pulls objects toward Earth?",
+            answers:[
+                "Magnetism",
+                "Gravity",
+                "Friction",
+                "Electricity"
+            ],
+            correct:1,
+            time:20
+        },
+
+        {
+            question:"Which organ pumps blood around the body?",
+            answers:[
+                "Lungs",
+                "Brain",
+                "Heart",
+                "Kidney"
+            ],
+            correct:2,
+            time:20
+        },
+
+        {
+            question:"What is the closest star to Earth?",
+            answers:[
+                "Sirius",
+                "The Sun",
+                "Polaris",
+                "Betelgeuse"
+            ],
+            correct:1,
+            time:20
+        }
+
+    ]
+},
+
+
+{
+    title:"Technology",
+
+    questions:[
+
+        {
+            question:"What does CPU stand for?",
+            answers:[
+                "Central Processing Unit",
+                "Computer Power Unit",
+                "Central Program Utility",
+                "Computer Processing User"
+            ],
+            correct:0,
+            time:20
+        },
+
+        {
+            question:"Which language is used to style web pages?",
+            answers:[
+                "HTML",
+                "CSS",
+                "Python",
+                "C++"
+            ],
+            correct:1,
+            time:20
+        },
+
+        {
+            question:"Which device stores files permanently?",
+            answers:[
+                "RAM",
+                "CPU",
+                "SSD",
+                "GPU"
+            ],
+            correct:2,
+            time:20
+        },
+
+        {
+            question:"What does USB stand for?",
+            answers:[
+                "Universal Serial Bus",
+                "Universal System Board",
+                "United Serial Bus",
+                "User Storage Base"
+            ],
+            correct:0,
+            time:20
+        },
+
+        {
+            question:"Which component is mainly used for graphics processing?",
+            answers:[
+                "GPU",
+                "RAM",
+                "PSU",
+                "CPU"
+            ],
+            correct:0,
+            time:20
+        }
+
+    ]
+},
+
+
+{
+    title:"Math",
+
+    questions:[
+
+        {
+            question:"What is 7 × 8?",
+            answers:[
+                "54",
+                "56",
+                "64",
+                "48"
+            ],
+            correct:1,
+            time:15
+        },
+
+        {
+            question:"What is 100 ÷ 4?",
+            answers:[
+                "20",
+                "25",
+                "30",
+                "40"
+            ],
+            correct:1,
+            time:15
+        },
+
+        {
+            question:"What is 15 + 27?",
+            answers:[
+                "32",
+                "40",
+                "42",
+                "44"
+            ],
+            correct:2,
+            time:15
+        },
+
+        {
+            question:"What is 9²?",
+            answers:[
+                "18",
+                "72",
+                "81",
+                "90"
+            ],
+            correct:2,
+            time:15
+        },
+
+        {
+            question:"What is half of 50?",
+            answers:[
+                "20",
+                "25",
+                "30",
+                "35"
+            ],
+            correct:1,
+            time:15
+        }
+
+    ]
+}
+
+];
+
+
+/* =========================
+   STATE
+========================= */
+
+let currentQuestion=0;
+let score=0;
+let timerValue=20;
+let timerInterval=null;
+let answered=false;
+
+
+/* =========================
+   SCREEN CONTROL
+========================= */
+
+function hideAll(){
+
+    document.getElementById("homeScreen")
+        .classList.add("hidden");
+
+    document.getElementById("editorScreen")
+        .classList.add("hidden");
+
+    document.getElementById("playScreen")
+        .classList.add("hidden");
+
+    document.getElementById("resultScreen")
+        .classList.add("hidden");
+}
+
+
+function showHome(){
+
+    clearInterval(timerInterval);
+
+    hideAll();
+
+    document.getElementById("homeScreen")
+        .classList.remove("hidden");
+
+    updateHomeInfo();
+}
+
+
+/* =========================
+   PREMADE
+========================= */
+
+function loadPremade(index){
+
+    /*
+       structuredClone creates a separate copy,
+       so editing the premade quiz doesn't
+       modify the original.
+    */
+
+    quiz =
+        JSON.parse(
+            JSON.stringify(
+                premadeQuizzes[index]
+            )
+        );
+
+    saveQuiz(false);
+
+    alert(
+        "Loaded: " +
+        quiz.title
+    );
+
+    openEditor();
+}
+
+
+/* =========================
+   HOME
+========================= */
+
+function updateHomeInfo(){
+
+    document.getElementById("homeQuizInfo")
+        .textContent =
+        quiz.title +
+        " • " +
+        quiz.questions.length +
+        " questions";
+}
+
+
+/* =========================
+   EDITOR
+========================= */
+
+function updateQuizTitle(){
+
+    quiz.title =
+        document.getElementById("quizTitle").value ||
+        "My Quiz";
+
+    saveQuiz(false);
+}
+
+
+function openEditor(){
+
+    hideAll();
+
+    document.getElementById("editorScreen")
+        .classList.remove("hidden");
+
+    renderEditor();
+}
+
+
+function renderEditor(){
+
+    document.getElementById("quizTitle").value =
+        quiz.title;
+
+    const container =
+        document.getElementById(
+            "questionsContainer"
+        );
+
+    container.innerHTML="";
+
+
+    quiz.questions.forEach((q,index)=>{
+
+        const card =
+            document.createElement("div");
+
+        card.className="question-card";
+
+
+        card.innerHTML=`
+
+            <div class="question-head">
+
+                <h3>
+                    Question ${index+1}
+                </h3>
+
+                <button
+                    class="delete-btn"
+                    onclick="deleteQuestion(${index})">
+                    🗑️ Delete
+                </button>
+
+            </div>
+
+
+            <textarea
+                class="question-text"
+                placeholder="Type your question..."
+                oninput="editQuestion(${index},this.value)"
+            >${escapeHTML(q.question)}</textarea>
+
+
+            <div class="answers">
+
+                ${q.answers.map((answer,aIndex)=>`
+
+                    <div class="answer-edit
+                    ${q.correct===aIndex ? "correct":""}">
+
+                        <input
+                            type="text"
+                            value="${escapeAttribute(answer)}"
+                            placeholder="Answer ${aIndex+1}"
+                            oninput="editAnswer(
+                                ${index},
+                                ${aIndex},
+                                this.value
+                            )">
+
+                        <label>
+
+                            <input
+                                type="radio"
+                                name="correct${index}"
+                                ${q.correct===aIndex
+                                    ?"checked":""
+                                }
+                                onchange="setCorrect(
+                                    ${index},
+                                    ${aIndex}
+                                )">
+
+                            Correct answer
+
+                        </label>
+
+                    </div>
+
+                `).join("")}
+
+            </div>
+
+
+            <br>
+
+
+            <label>
+                Time limit:
+
+                <select
+                    onchange="setTime(
+                        ${index},
+                        this.value
+                    )">
+
+                    <option value="10"
+                        ${q.time==10?"selected":""}>
+                        10 seconds
+                    </option>
+
+                    <option value="20"
+                        ${q.time==20?"selected":""}>
+                        20 seconds
+                    </option>
+
+                    <option value="30"
+                        ${q.time==30?"selected":""}>
+                        30 seconds
+                    </option>
+
+                    <option value="60"
+                        ${q.time==60?"selected":""}>
+                        60 seconds
+                    </option>
+
+                </select>
+
+            </label>
+
+        `;
+
+
+        container.appendChild(card);
+
+    });
+
+}
+
+
+function addQuestion(){
+
+    quiz.questions.push({
+
+        question:"New question",
+
+        answers:[
+            "Answer 1",
+            "Answer 2",
+            "Answer 3",
+            "Answer 4"
+        ],
+
+        correct:0,
+
+        time:20
+
+    });
+
+    renderEditor();
+
+    saveQuiz(false);
+}
+
+
+function deleteQuestion(index){
+
+    if(quiz.questions.length<=1){
+
+        alert(
+            "You need at least one question."
+        );
+
+        return;
+    }
+
+    quiz.questions.splice(index,1);
+
+    renderEditor();
+
+    saveQuiz(false);
+}
+
+
+function editQuestion(index,value){
+
+    quiz.questions[index].question=value;
+
+    saveQuiz(false);
+}
+
+
+function editAnswer(index,aIndex,value){
+
+    quiz.questions[index]
+        .answers[aIndex]=value;
+
+    saveQuiz(false);
+}
+
+
+function setCorrect(index,aIndex){
+
+    quiz.questions[index].correct=aIndex;
+
+    renderEditor();
+
+    saveQuiz(false);
+}
+
+
+function setTime(index,value){
+
+    quiz.questions[index].time=
+        Number(value);
+
+    saveQuiz(false);
+}
+
+
+/* =========================
+   PLAY
+========================= */
+
+function startQuiz(){
+
+    if(!quiz.questions.length){
+
+        alert("Add at least one question!");
+
+        return;
+    }
+
+    hideAll();
+
+    document.getElementById("playScreen")
+        .classList.remove("hidden");
+
+    currentQuestion=0;
+    score=0;
+
+    showQuestion();
+}
+
+
+function leaveGame(){
+
+    if(
+        confirm(
+            "Leave this game and return home?"
+        )
+    ){
+
+        clearInterval(timerInterval);
+
+        showHome();
+
+    }
+
+}
+
+
+function showQuestion(){
+
+    clearInterval(timerInterval);
+
+    answered=false;
+
+    const q =
+        quiz.questions[currentQuestion];
+
+
+    document.getElementById("progress")
+        .textContent =
+        "Question " +
+        (currentQuestion+1) +
+        " / " +
+        quiz.questions.length;
+
+
+    document.getElementById("questionText")
+        .textContent=q.question;
+
+
+    const grid =
+        document.getElementById("answerGrid");
+
+    grid.innerHTML="";
+
+
+    let answers =
+        q.answers.map((text,index)=>({
+
+            text:text,
+
+            originalIndex:index
+
+        }));
+
+
+    answers.sort(
+        ()=>Math.random()-0.5
+    );
+
+
+    answers.forEach(answer=>{
+
+        const btn =
+            document.createElement("button");
+
+        btn.className="answer-btn";
+
+        btn.textContent=answer.text;
+
+        btn.onclick=()=>{
+            chooseAnswer(
+                answer.originalIndex,
+                btn
+            );
+        };
+
+        grid.appendChild(btn);
+
+    });
+
+
+    timerValue=q.time || 20;
+
+    updateTimer();
+
+
+    timerInterval=setInterval(()=>{
+
+        timerValue--;
+
+        updateTimer();
+
+        if(timerValue<=0){
+
+            clearInterval(timerInterval);
+
+            timeUp();
+
+        }
+
+    },1000);
+
+}
+
+
+function updateTimer(){
+
+    document.getElementById("timer")
+        .textContent=timerValue;
+
+}
+
+
+function chooseAnswer(index,button){
+
+    if(answered) return;
+
+    answered=true;
+
+    clearInterval(timerInterval);
+
+
+    const q =
+        quiz.questions[currentQuestion];
+
+
+    const buttons =
+        document.querySelectorAll(
+            ".answer-btn"
+        );
+
+
+    buttons.forEach(b=>{
+        b.classList.add("disabled");
+    });
+
+
+    if(index===q.correct){
+
+        const points =
+            500 +
+            Math.round(
+                500 *
+                (
+                    timerValue /
+                    (q.time || 20)
+                )
+            );
+
+        score+=points;
+
+        button.style.outline=
+            "7px solid white";
+
+    }else{
+
+        button.style.opacity="0.4";
+
+        buttons.forEach(b=>{
+
+            if(
+                b.textContent===
+                q.answers[q.correct]
+            ){
+
+                b.style.outline=
+                    "7px solid white";
+
+            }
+
+        });
+
+    }
+
+
+    setTimeout(
+        nextQuestion,
+        1200
+    );
+
+}
+
+
+function timeUp(){
+
+    answered=true;
+
+    const q =
+        quiz.questions[currentQuestion];
+
+
+    const buttons =
+        document.querySelectorAll(
+            ".answer-btn"
+        );
+
+
+    buttons.forEach(b=>{
+
+        b.classList.add("disabled");
+
+        if(
+            b.textContent===
+            q.answers[q.correct]
+        ){
+
+            b.style.outline=
+                "7px solid white";
+
+        }
+
+    });
+
+
+    setTimeout(
+        nextQuestion,
+        1200
+    );
+
+}
+
+
+function nextQuestion(){
+
+    currentQuestion++;
+
+    if(
+        currentQuestion>=
+        quiz.questions.length
+    ){
+
+        showResults();
+
+    }else{
+
+        showQuestion();
+
+    }
+
+}
+
+
+/* =========================
+   RESULTS
+========================= */
+
+function showResults(){
+
+    clearInterval(timerInterval);
+
+    hideAll();
+
+    document.getElementById("resultScreen")
+        .classList.remove("hidden");
+
+
+    document.getElementById("finalScore")
+        .textContent=score;
+
+
+    document.getElementById("leaderScore")
+        .textContent=score;
+
+
+    let message="Keep going!";
+
+
+    if(score>=4000)
+        message="🔥 Incredible!";
+
+    else if(score>=2500)
+        message="⭐ Great job!";
+
+    else if(score>=1000)
+        message="👍 Nice work!";
+
+
+    document.getElementById("finalMessage")
+        .textContent=message;
+
+}
+
+
+/* =========================
+   SAVE
+========================= */
+
+function saveQuiz(showMessage=true){
+
+    localStorage.setItem(
+        "quizrushQuiz",
+        JSON.stringify(quiz)
+    );
+
+    if(showMessage){
+
+        alert("Quiz saved!");
+
+    }
+
+    updateHomeInfo();
+
+}
+
+
+function loadQuiz(){
+
+    const saved =
+        localStorage.getItem(
+            "quizrushQuiz"
+        );
+
+
+    if(!saved) return;
+
+
+    try{
+
+        quiz=JSON.parse(saved);
+
+    }catch(e){
+
+        console.log(
+            "Could not load saved quiz."
+        );
+
+    }
+
+}
+
+
+/* =========================
+   EXPORT
+========================= */
+
+function exportQuiz(){
+
+    const data =
+        JSON.stringify(
+            quiz,
+            null,
+            2
+        );
+
+
+    const blob =
+        new Blob(
+            [data],
+            {
+                type:"application/json"
+            }
+        );
+
+
+    const url =
+        URL.createObjectURL(blob);
+
+
+    const a =
+        document.createElement("a");
+
+
+    a.href=url;
+
+
+    a.download =
+        (
+            quiz.title ||
+            "quiz"
+        )
+        .replace(
+            /[^a-z0-9]/gi,
+            "_"
+        )
+        +
+        ".json";
+
+
+    a.click();
+
+
+    URL.revokeObjectURL(url);
+
+}
+
+
+/* =========================
+   IMPORT
+========================= */
+
+function importQuiz(event){
+
+    const file =
+        event.target.files[0];
+
+
+    if(!file) return;
+
+
+    const reader =
+        new FileReader();
+
+
+    reader.onload=function(){
+
+        try{
+
+            const imported =
+                JSON.parse(
+                    reader.result
+                );
+
+
+            if(
+                !imported.questions ||
+                !Array.isArray(
+                    imported.questions
+                )
+            ){
+
+                throw new Error();
+
+            }
+
+
+            quiz=imported;
+
+
+            saveQuiz(false);
+
+            renderEditor();
+
+
+            alert(
+                "Quiz imported!"
+            );
+
+
+        }catch(e){
+
+            alert(
+                "Invalid quiz file."
+            );
+
+        }
+
+    };
+
+
+    reader.readAsText(file);
+
+}
+
+
+/* =========================
+   SECURITY HELPERS
+========================= */
+
+function escapeHTML(text){
+
+    return String(text)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+function escapeAttribute(text){
+
+    return escapeHTML(text);
+
+}
+
+
+/* =========================
+   START
+========================= */
+
+loadQuiz();
+
+updateHomeInfo();
+
+showHome();
+
+if (window.self !== window.top) {
+    document.body.classList.add("embed");
+}
+
+</script>
+
+</body>
+</html>
